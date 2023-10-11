@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Got an Egg!</h1>
+    <form action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.color.label }}<br>
+        {{ form.color() }}
+    </p>
+    <p>{{ form.submit() }}</p>
+    </form>
+    <div>
+        <table>
+            <tr>
+                <th>Year</th>
+                <th>Month</th>
+                <th>No. of Eggs</th>
+            </tr>
+            {% for row in eggCount %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
