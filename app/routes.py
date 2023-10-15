@@ -14,7 +14,7 @@ def index():
         'SELECT `hens`.`name`, COUNT( `eggs`.`color` ) FROM `hens` LEFT JOIN `eggs` ON `hens`.`egg_color` = `eggs`.`color` GROUP BY `hens`.`name`')).all()
     form = EggLogForm()
     if form.validate_on_submit():
-        egg = Egg(color=form.color.data)
+        egg = Egg(color=form.color.data, weight=form.weight.data)
         db.session.add(egg)
         db.session.commit()
         return redirect(url_for('index'))
